@@ -1,0 +1,211 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+<!--Slider-->
+<div style="display: none">
+    {{block name="tmp"}}
+    {{/block}}
+</div>
+
+<div class="banner">
+
+    <div id="top" class="callbacks_container">
+        <ul class="rslides" id="slider3">
+            <!---------------------------------       以下是三张轮播图的展示        ----------------------------------------------->
+            <li>
+                <div class="banner"><a href="http://lyszgs.com/tour/"><img src="__STATIC__/index/images/banner2.jpg" class="img-responsive" alt="banner" style="width: 100%;" /></a></div>
+            </li>
+            <li>
+                <div class="banner"><a href="http://lyszgs.com/tour/"><img src="__STATIC__/index/images/banner6201.jpg" class="img-responsive" alt="banner" style="width: 100%;" /></a></div>
+            </li>
+            <li>
+                <div class="banner"><a href="http://lyszgs.com/tour/"><img src="__STATIC__/index/images/banner6202.jpg" class="img-responsive" alt="banner" style="width: 100%;" /></a></div>
+            </li>
+            <li>
+                <div class="banner"><a href="http://lyszgs.com/tour/"><img src="__STATIC__/index/images/banner6204.jpg" class="img-responsive" alt="banner" style="width: 100%;" /></a></div>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!--/Slider-->
+
+<div class="mainWidth">
+    <div class="container">
+        <div class="row PTB20 featured-article-wrapper">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="img-wrapper">
+                        <!----------------以下是热门且推荐的视频展示  仅限一个----------------->
+                    <video src="__STATIC__/upload/video/{{$videoDetailOne->filename}}" controls="controls" width="570px" height="375px" autoplay>
+                    </video>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 info-block">
+                <div class="content_box">
+                    <div class="title mt0">热门 * 视频<a href="#" class="aright">MORE</a></div>
+                    <ul class="list_new">
+                        <!-------------------------------    以下是热门视频标题的展示     ---------------------------------->
+                        {{volist name="videoTitleList" id="title"}}
+                        <li>
+                            <a href="{{:url('index/video/videoDetail',['id'=>$title->id])}}">{{$title->title}}</a>
+                        </li>
+                        {{/volist}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="heng_box heng_box_1">
+    <div class="plan_com">
+        <div class="row center">
+            <div class="col-md-12 col-sm-12 col-xs-12 font50 PT20 font-weight" style="letter-spacing:5px;" data-sr="move 100px, over .8s,wait .1s, enter bottom">
+                为什么?
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 font25 PT20 font-weight" style="letter-spacing:3px;" data-sr="move 100px, over .8s,wait .1s, enter bottom">
+                10万亿+全世界人民选择了临沂市政
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 PT20" data-sr="move 100px, over .8s,wait .1s, enter bottom">
+                <a href="{{:url('index/synopsis/index')}}" class="colorfff">+了解更多</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="heng_box heng_box_2">
+    <div class="plan_com">
+        <div class="row">
+            <div class="col-md-2 col-sm-2 col-xs-12 center" data-sr="move 100px, over .8s,wait .1s, enter bottom">
+
+                <!-----------********文章图片*******----------->
+
+                <img src="__STATIC__/index/images/bz.PNG" class="img-responsive img_pro" style="padding-top: 57px;padding-left: 26px;" />
+            </div>
+            <div class="col-md-10 col-sm-10 col-xs-12">
+                <table class="table" style="margin-bottom:0px;">
+                    <thead>
+                    <tr>
+                        <th width="35%">热门文章</th>
+                        <th width="40%">摘要</th>
+                        <th width="25%">作者</th>
+                    </tr>
+                    </thead>
+                </table>
+                <div id="LopScrollBox" style="height: 235px;margin-bottom:20px;overflow: hidden;">
+                    <table class="table ScrollBox" id="LopScrollTable" style="margin-top:0px;">
+
+                        <!----------------------************* 以下是热门文章列表输出 *********------------------------>
+                        {{volist name="articleTitleList" id="atitle"}}
+                        <tr>
+                            <a href="www.baidu.com"> <td width="35%">{{$atitle->title}}</td> </a>
+                            <a href="www.baidu.com"><td width="40%">{{$atitle->describe}}</td> </a>
+                            <a href="www.baidu.com"><td width="25%">{{$atitle->author}}</td> </a>
+                        </tr>
+                        {{/volist}}
+                    </table>
+                </div>
+
+                <script type="text/javascript" src="__STATIC__/index/js/LopScroll.js"></script>
+                <script type="text/javascript">
+                    //首页拍卖列表开始循环滚动
+                    $('#LopScrollBox').myScroll({
+                        speed: 50, //数值越大，速度越慢
+                        rowHeight: $("#LopScrollTable tr").height() //tr的高度 注意：rowHeight必须包含margin padding border等等
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="heng_box heng_box_3">
+    <div class="plan_com">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="title_ty">
+                    <a href="javascript:;" data-sr="move 100px, over .8s,wait .1s, enter bottom">精品图片</a>
+                </div>
+                <div class="c1_list">
+                    <!--Slider-->
+                    <div class="Box">
+                        <div class="content content_zhuying">
+                            <div class="Box_con clearfix">
+                                <div class="conbox" id="BoxUl1">
+                                    <ul>
+                                        <!-------------------------******************** 以下是精品图片循环输出 ***********************--------------------------------->
+                                    {{volist name="imageRecommendList" id="rec"}}
+                                        <li class="P0" data-sr="move 100px, over .8s,wait .1s, enter bottom">
+                                            <a href="{{:url('index/image/imageDetail',['id'=>$rec->id])}}">
+                                                <img src="__STATIC__/upload/image/{{$rec->name}}" class="img-responsive"  style="width: 300px;height: 354.81px; margin: 3px"/>
+                                                <div class="hover" style="margin-left: 15px">
+                                                    <p class="P10">{{$rec->title}}</p>
+                                                    <p class="P10">{{$rec->author}}</p>
+                                                    <p class="P10">{{$rec->sdescribe}}</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    {{/volist}}
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        //滚动元素id，左切换按钮，右切换按钮，切换元素个数id,滚动方式，切换方向，是否自动滚动，滚动距离，滚动时间，滚动间隔，显示个数
+                        LbMove('BoxUl1', 'btnl1', 'btnr1', 'BoxSwitch1', true, 'left', true, 300, 1500, 2500, 4);
+                    </script>
+                    <!--/Slider-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="heng_box heng_box_1">
+    <div class="plan_com PT40 PB40">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-4 col-sm-4 col-xs-12 center font18 font-weight" style="letter-spacing:3px;line-height:28px;" data-sr=" move 100px, over .8s,wait .1s, enter bottom">
+
+                    <p class="font30 color5c7 font-weight PT20"></p>
+                </div>
+
+                <!------------------********以下是公司信息的描述********-------------------->
+                <div class="col-md-4 col-sm-4 col-xs-12 center font18 font-weight" style="letter-spacing:3px;line-height:28px;" data-sr="move 100px, over .8s,wait .1s, enter bottom">
+                    <p>临沂市政集团</p>
+                    <p>LINYI MUNICIPAL GROUP</p>
+                    <p class="font30 color5c7 font-weight PT20">+</p>
+                    <div class="font18 color5c7 PT20" style="letter-spacing:1px;line-height:28px;">
+                        关于市政
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 center font20" data-sr="move 100px, over .8s,wait .1s, enter bottom">
+
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 PT40">
+                <div style="background:#7A92AC;min-height: 100px;overflow-y: auto;">
+                    <!----------------------------------------  以下是简介的展示  ---------------------------------------------->
+
+                    <div class="col-md-7 col-sm-7 col-xs-12 P0" data-sr="move 100px, over .8s,wait .1s, enter bottom">
+                        <!--公司图片的展示 -->
+                        <img src="__STATIC__/upload/synopsis/{{$detailSynopsisOne->name}}" class="img-responsive"  style="width: 700px;height: 428.34px;margin: 5px;margin-top: 30px"/>
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-12 P0">
+                        <div class="box_bg" style="padding-top: 5px">
+                            <div class="font30 P10 font-weight" style="line-height:30px;letter-spacing:3px;" data-sr="move 100px, over .8s,wait .1s, enter bottom">{{$detailSynopsisOne->stitle}}</div>
+                            <div class="left font24 P10 PT20" style="line-height:30px;letter-spacing:3px;" data-sr="move 100px, over .8s,wait .1s, enter bottom">
+                                {{:mb_substr(trim($detailSynopsisOne->sdescribe),0,30)}}...
+                            </div>
+                            <div class="left font18 P10 PT30" style="line-height:30px;letter-spacing:3px; padding: 0px;" data-sr="move 100px, over .8s,wait .1s, enter bottom">
+                                {{:mb_substr(trim($detailSynopsisOne->scontent),0,320)}}...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/block}}

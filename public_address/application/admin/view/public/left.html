@@ -1,0 +1,157 @@
+<div class="wrapper">
+    <div class="sidebar">
+        <div class="has-scrollbar">
+            <div class="sidebar-wrapper">
+                <div class="navbutton" id="navbutton-collapsed">
+                    <a href="#" class="simple-text">
+                        <!--<img src="__STATIC__/images/menu_zd.png" />-->
+                        <i class="glyphicon glyphicon-step-backward"></i>
+                    </a>
+                </div>
+                <ul class="nav-ul">
+                    <li class="nav-li-1">
+                        <a href="javascript:ClickShow(1);"><i></i><span class="nav-title">首&nbsp;&nbsp;&nbsp;&nbsp;页 </span></a>
+                        <i class="ti-jt glyphicon glyphicon-menu-up"></i>
+                    </li>
+
+                    <li class="nav-li-2}">
+                        <a href="javascript:ClickShow(2);" >
+                            <i ></i>
+                            <span class="nav-title">模&nbsp;&nbsp;&nbsp;&nbsp;块</span>
+                        </a>
+                        <i class="ti-jt glyphicon glyphicon-menu-up"></i>
+                    </li>
+                        <li class="nav-li-3}">
+                        <a href="javascript:ClickShow(3);" >
+                            <i ></i>
+                            <span class="nav-title">视&nbsp;&nbsp;&nbsp;&nbsp;频</span>
+                        </a>
+                        <i class="ti-jt glyphicon glyphicon-menu-up"></i>
+                    </li>
+                    <li class="nav-li-4}">
+                        <a href="javascript:ClickShow(4);" >
+                            <i ></i>
+                            <span class="nav-title">图&nbsp;&nbsp;&nbsp;&nbsp;片</span>
+                        </a>
+                        <i class="ti-jt glyphicon glyphicon-menu-up"></i>
+                    </li>
+                    <li class="nav-li-5}">
+                        <a href="javascript:ClickShow(5);" >
+                            <i ></i>
+                            <span class="nav-title">文&nbsp;&nbsp;&nbsp;&nbsp;章</span>
+                        </a>
+                        <i class="ti-jt glyphicon glyphicon-menu-up"></i>
+                    </li>
+                    <li class="nav-li-6}">
+                        <a href="javascript:ClickShow(6);" >
+                            <i ></i>
+                            <span class="nav-title">招&nbsp;&nbsp;&nbsp;&nbsp;聘</span>
+                        </a>
+                        <i class="ti-jt glyphicon glyphicon-menu-up"></i>
+                    </li>
+                    <li class="nav-li-7}">
+                        <a href="javascript:ClickShow(7);" >
+                            <i ></i>
+                            <span class="nav-title">管   理  员</span>
+                        </a>
+                        <i class="ti-jt glyphicon glyphicon-menu-up"></i>
+                    </li>
+                    <li class="nav-li-8}">
+                        <a href="javascript:ClickShow(8);" >
+                            <i ></i>
+                            <span class="nav-title">模块    管理</span>
+                        </a>
+                        <i class="ti-jt glyphicon glyphicon-menu-up"></i>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="left-sidebar">
+            <div class="user_tab user_tab_left" id="user_tab_left_1">
+                <h3 class="user_tab-title">后台   首页 <span class="spanzk">+</span></h3>
+                <ul>
+                    <a href="{{:url('admin/index/addHome')}}" ><li ><span>后台首页</span></li></a>
+                </ul>
+            </div>
+            <div class="user_tab user_tab_left" id="user_tab_left_2">
+                <h3 class="user_tab-title">模块   信息<span class="spanzk">+</span></h3>
+                <ul>
+                    {{volist name="companyList" id="vi"}}
+                    <a href="{{:url('admin/synopsis/company',['id'=>$vi->id])}}" ><li ><span>{{$vi->category_name}}</span></li></a>
+                    {{/volist}}
+                </ul>
+            </div>
+            <div class="user_tab user_tab_left" id="user_tab_left_3">
+                <h3 class="user_tab-title">视    频<span class="spanzk">+</span></h3>
+                <ul>
+                    <a href="{{:url('admin/video/admin')}}" ><li ><span>视频管理</span></li></a>
+                    <a href="{{:url('admin/video/addVideo')}}" ><li ><span>发布视频</span></li></a>
+                    <a href="{{:url('admin/video/cate')}}" ><li ><span>视频分类</span></li></a>
+                    <a href="{{:url('admin/video/adminCate')}}" ><li ><span>视频分类管理</span></li></a>
+                </ul>
+            </div>
+            <div class="user_tab user_tab_left" id="user_tab_left_4">
+                <h3 class="user_tab-title">图    片<span class="spanzk">+</span></h3>
+                <ul>
+                    <a href="{{:url('admin/image/admin')}}" ><li ><span>图片管理</span></li></a>
+                    <a href="{{:url('admin/image/addImage')}}" ><li ><span>发布图片</span></li></a>
+                    <a href="{{:url('admin/image/cate')}}" ><li ><span>图片分类</span></li></a>
+                    <a href="{{:url('admin/image/adminCate')}}" ><li ><span>图片分类管理</span></li></a>
+                </ul>
+            </div>
+            <div class="user_tab user_tab_left" id="user_tab_left_5">
+                <h3 class="user_tab-title">文    章<span class="spanzk">+</span></h3>
+                <ul>
+                    <a href="{{:url('admin/article/admin')}}" ><li ><span>文章管理</span></li></a>
+                    <a href="{{:url('admin/article/addArticle')}}" ><li ><span>发布文章</span></li></a>
+                    <a href="{{:url('admin/article/cate')}}" ><li ><span>文章分类</span></li></a>
+                    <a href="{{:url('admin/article/adminCate')}}" ><li ><span>文章分类管理</span></li></a>
+                </ul>
+            </div>
+            <div class="user_tab user_tab_left" id="user_tab_left_6">
+                <h3 class="user_tab-title">招    聘<span class="spanzk">+</span></h3>
+                <ul>
+                    <a href="{{:url('admin/recruit/listed')}}" ><li ><span>应聘列表</span></li></a>
+                    <a href="{{:url('admin/recruit/position')}}" ><li ><span>招聘职位</span></li></a>
+                    <a href="{{:url('admin/recruit/release')}}" ><li ><span>发布职位</span></li></a>
+                </ul>
+            </div>
+            <div class="user_tab user_tab_left" id="user_tab_left_7">
+                <h3 class="user_tab-title">管  理  员<span class="spanzk">+</span></h3>
+                <ul>
+                    <a href="{{:url('admin/admin/index')}}" ><li ><span>管理员管理</span></li></a>
+                    <a href="{{:url('admin/admin/addAdmin')}}" ><li ><span>添加管理员</span></li></a>
+                    <a href="{{:url('admin/admin/detail')}}" ><li ><span>基本设置</span></li></a>
+                </ul>
+            </div>
+            <div class="user_tab user_tab_left" id="user_tab_left_8">
+                <h3 class="user_tab-title">公司 模块<span class="spanzk">+</span></h3>
+                <ul>
+                    <a href="{{:url('admin/category/admin')}}" ><li ><span>模块管理</span></li></a>
+                    <a href="{{:url('admin/category/addCate')}}" ><li ><span>添加模块</span></li></a>
+                </ul>
+            </div>
+
+        </div>
+        <script type="text/javascript">
+            for (var i =1 ;i<9;i++){
+                var left = '#user_tab_left_'+i+' > ul > a';
+                var oa =   $(left).attr('href');
+                var num = oa.replace('/public_address/public/admin/','').indexOf('/');
+                var str1 = oa.replace('/public_address/public/admin/','').substr(0,num);
+                var num2 = location.pathname.replace('/public_address/public/admin/','').indexOf('/');
+                var  str2 = location.pathname.replace('/public_address/public/admin/','').substr(0,num2);
+                if (str1 == str2){
+                    var left2 = '#user_tab_left_'+i;
+                   var good = $(left2);
+                    console.log(good.attr('class','user_tab user_tab_left user_tab_left_show'))
+                }
+            }
+
+        </script>
+
+        <!--<div class="nano-pane"> user_tab_left_show<div class="nano-slider"></div></div>-->
+
+    </div>

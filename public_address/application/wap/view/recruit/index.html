@@ -1,0 +1,64 @@
+{{extend name="public/base"}}
+
+{{block name="content"}}
+
+<div class="w100 banner">
+    <img src="__STATIC__/wap/img/banner_06.png" />
+</div>
+<!--banner end-->
+<div class="nav-zong">
+    <div id="wrapper">
+        <ul class="category_nav">
+            <li id="one"><a href="{{:url('wap/index/index')}}"><img src="__STATIC__/wap/img/icon_12.png" /></a></li>
+            <li class="one">
+                <a>人力资源(招聘职位)</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--nav end-->
+
+<div class="clearfix w96 rl_zy">
+
+    {{volist name="result" id="vo"}}
+    <ul>
+        <li><span>职位名称 :</span>{{$vo['recruitname']}}</li>
+        <li><span>技术要求 :</span>学历：
+            <select name="education" id="education" disabled>
+                <option value="0"  {{if condition="$vo['education'] == 0"}} selected="selected" {{/if}} >不要求</option>
+                <option value="1" {{if condition="$vo['education'] == 1"}} selected="selected" {{/if}} >初中</option>
+                <option value="2" {{if condition="$vo['education'] == 2"}} selected="selected" {{/if}} >高中</option>
+                <option value="3" {{if condition="$vo['education'] == 3"}} selected="selected" {{/if}} >中专</option>
+                <option value="4" {{if condition="$vo['education'] == 4"}} selected="selected" {{/if}} >大专</option>
+                <option value="5" {{if condition="$vo['education'] == 5"}} selected="selected" {{/if}} >本科</option>
+                <option value="6" {{if condition="$vo['education'] == 6"}} selected="selected" {{/if}} >硕士</option>
+                <option value="7" {{if condition="$vo['education'] == 7"}} selected="selected" {{/if}} >博士</option>
+                <option value="8" {{if condition="$vo['education'] == 8"}} selected="selected" {{/if}} >博士后</option>
+            </select>；
+        </li>
+        <li>专业：{{$vo['major']}}；</li>
+        <li>
+            工作经验:
+            <select name="current" id="experience" disabled>
+                <option {{if condition="$vo['current'] == 0"}} selected="selected" {{/if}} value="0" >不要求</option>
+                <option  {{if condition="$vo['current'] == 001"}} selected="selected" {{/if}} value="001">应届毕业生</option>
+                <option  {{if condition="$vo['current'] == 1"}} selected="selected" {{/if}} value="1">1年以上</option>
+                <option  {{if condition="$vo['current'] == 2"}} selected="selected" {{/if}} value="2">2年以上</option>
+                <option  {{if condition="$vo['current'] == 3"}} selected="selected" {{/if}} value="3">3年以上</option>
+                <option  {{if condition="$vo['current'] == 4"}} selected="selected" {{/if}} value="4">4年以上</option>
+                <option  {{if condition="$vo['current'] == 5"}} selected="selected" {{/if}} value="5">5年以上</option>
+                <option  {{if condition="$vo['current'] == 6"}} selected="selected" {{/if}} value="6">6年以上</option>
+                <option  {{if condition="$vo['current'] == 7"}} selected="selected" {{/if}} value="7">7年以上</option>
+                <option  {{if condition="$vo['current'] == 8"}} selected="selected" {{/if}} value="8">8年以上</option>
+                <option  {{if condition="$vo['current'] == 9"}} selected="selected" {{/if}} value="9">9年以上</option>
+                <option  {{if condition="$vo['current'] == 10"}} selected="selected" {{/if}} value="10">10年以上</option>
+            </select>
+        </li>
+        <li><span>发布时间 :</span>{{:date('Y-m-d',$vo['created_at'])}}</li>
+        <li><span>工作地点 :</span>{{$vo['workingplace']}}</li>
+        <li><span>招聘人数 :</span>{{$vo['popnumber']}}人</li>
+    </ul>
+    {{/volist}}
+</div>
+{{$result->render()}}
+{{/block}}

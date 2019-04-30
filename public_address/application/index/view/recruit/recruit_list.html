@@ -1,0 +1,43 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+<!--banner-->
+
+<!--/banner-->
+<div class="heng_box heng_box_4">
+    <div class="plan_com">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="title_ty title_ty_3" id="title_ty">
+                    <a href="#" data="1">招聘岗位:</a>
+                </div>
+                <div class="c1_list">
+                    <ul class="listnew P10 PT15">
+                        {{volist name="recruitSort" id="vo"}}
+                        <li data-sr="move 100px, over .8s,wait .1s, enter bottom">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="divCon">
+                                    <a href="{{:url('index/recruit/recruitDetail',['id'=>$vo->id])}}" class="title font16">{{$vo->recruitname}}</a>
+                                    <p>{{$vo->duty}}</p>
+                                    <div class="time">
+                                            <span class="font14 color999">
+                                                发布时间：{{$vo->created_at}}     <a href="{{:url('index/recruit/recruitDetail',['id'=>$vo->id])}}" class="btn-sm  btn-info">查看</a>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {{/volist}}
+                    </ul>
+                </div>
+                <div class="pager" data-sr="move 100px, over .8s,wait .1s, enter bottom">
+                    <div class="pagin-list col-md-12 col-sm-12 col-xs-12">
+                        <!--***************************以下是分页展示****************************--->
+                        {{$recruitSort->render()}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/block}}

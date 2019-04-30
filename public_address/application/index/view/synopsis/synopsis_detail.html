@@ -1,0 +1,38 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+<!--banner-->
+
+<!--/banner-->
+
+<div class="heng_box heng_box_4">
+    <div class="plan_com">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="c1_detail P15">
+
+                        <div style="background-color:gainsboro;border-radius: 5px;padding: 5px">
+                            {{volist name="synopsisCategory" id="synopsis"}}
+                            <a href="{{:url('index/synopsis/synopsisDetail',['category_id'=>$synopsis->id])}}" class="btn btn-default" style="margin-left: 25px">{{$synopsis->category_name}}</a>
+                            {{/volist}}
+                        </div>
+                    <div class="div_middle noborder PT30">
+                        <h4 class="h4">
+                           {{$synopsisDetail->stitle}}
+                        </h4>
+                        <p class="time">{{$synopsisDetail->sdescribe}}</p>
+                        <div class="detailsCont">
+                            <p style="text-align:center; padding-bottom:20px;">
+                                <img src="__STATIC__/upload/synopsis/{{$synopsisDetail->name}}" class="img-responsive" />
+                            </p>
+                            <p>
+                                {{$synopsisDetail->scontent}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/block}}

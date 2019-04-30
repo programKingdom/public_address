@@ -1,0 +1,41 @@
+<header class="dark_grey">
+    <!-- Header start -->
+    <div class="top">
+        <div class="logo">
+
+            <img src="__STATIC__/images/logo_01.png" class="logo-img" />
+
+        </div>
+        <div class="top-right">
+            <div class="top-time">
+                <i class="ti-panel"></i>
+
+            </div>
+            <div class="top-user">
+                <div class="my-select dk-select user-select">
+                    <div class="dk-selected" tabindex="0">
+                        <img src="__STATIC__/images/index_19.png" class="user-header" />
+                        <span class="substr" title="admin">{{$Think.session.adminname}}</span>
+                    </div>
+                    <ul class="dk-select-options">
+
+                        <li class="dk-option">
+                            <a href="{{:url('admin/admin/logout')}}" style="color:white;" target="_self">退出管理</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <a href="{{:url('admin/index/addHome')}}" style="color:white;">
+            <div class="top-home">
+                <span class="tab-home glyphicon glyphicon-home"></span>
+                <span class="tab-home-name">网站首页</span>
+            </div>
+            </a>
+            <div class="top-exit">
+                <span class="tab-exit glyphicon glyphicon-log-out"></span>
+                <span class="tab-exit-name"><a href="{{:url('admin/admin/logout')}}" style="color:white;">退出管理</a></span>
+            </div>
+        </div>
+    </div>
+</header>
+

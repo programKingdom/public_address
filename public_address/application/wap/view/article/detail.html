@@ -1,0 +1,34 @@
+{{extend name="public/base"}}
+
+{{block  name="content"}}
+<!--banner end-->
+<div class="nav-zong">
+    <div id="wrapper">
+        <ul class="category_nav">
+            <li><a href="{{:url('wap/index/index')}}"><img src="__STATIC__/wap/img/icon_12.png" /></a></li>
+            <li class="one">
+                <a href="{{:url('wap/article/index')}}">文章详情</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--nav end-->
+<div class="cp-xq clearfix">
+    <h3>{{$result['title']}}</h3>
+    {{if condition="isset($imagefile)"}}
+    <div class="cp_img">
+        {{volist name="imagefile"  id="image"}}
+        <img src="__STATIC__/upload/article/{{$image['filename']}}" />
+        {{/volist}}
+    </div>
+    {{/if}}
+    <div style="margin-left: 150px">
+        <p>{{$result['author']}}</p>
+        <p>简述:{{$result['describe']}}</p>
+        <p>时间:{{:date('Y-m-d H:i:s',$result['created_at'])}}</p>
+    </div>
+    <div class="cp_main">
+        <p>{{$result['content']}}</p>
+    </div>
+</div>
+{{/block}}

@@ -1,0 +1,14 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+<form action="{{:url('admin/article/doEditCategory')}}" method="post">
+    <div class="form-group">
+        <label class="control-label">分类名称</label>
+        <input type="text" name="articlecategoryname" value="{{$result->articlecategoryname}}" class="form-control" required>
+        <input type="hidden" value="{{$result->id}}" name="id">
+    </div>
+    <div class="form-group">
+        <input type="submit" value="确认编辑    " class="btn btn-primary">
+        <input type="reset" value="取消编辑" class="btn btn-default">
+    </div>
+</form>
+{{/block}}

@@ -1,0 +1,30 @@
+
+{{extend name="public/base"}}
+{{block name="content"}}
+	<table class="table table-bordered table-striped table-condensed table-hover"   style="background-color: rgba(255,255,200,0.8);">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>用户名</td>
+          <td>昵称</td>
+          <td>创建时间</td>
+          <td>操作菜单</td>
+        </tr>
+      </thead>
+      <tbody>
+    {{volist name="list" id="vo"}}
+        <tr>
+          <td>{{$vo['id']}}</td>
+          <td>{{$vo['username']}}</td>
+          <td>{{$vo['nick_name']}}</td>
+          <td>{{:date('Y-m-d H:i:s',$vo['created_at'])}}</td>
+          <td>
+            <a href="{{:url('admin/admin/edit',['id'=>$vo['id']])}}" class="btn btn-primary">编辑</a>
+            <a href="{{:url('admin/admin/delete',['id'=>$vo['id']])}}" class="btn btn-danger">删除</a>
+          </td>
+        </tr>
+        {{/volist}}
+      </tbody>
+    </table>
+{{/block}}
+

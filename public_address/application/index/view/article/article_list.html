@@ -1,0 +1,49 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+
+<div class="heng_box heng_box_4">
+    <div class="plan_com">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="title_ty title_ty_3" id="title_ty">
+                    <a href="#" data="1">文章的我</a>
+                </div>
+                <div class="c1_list">
+                    <ul class="listnew P10 PT15">
+                        {{volist name="articleSort" id="vo"}}
+                        <li data-sr="move 100px, over .8s,wait .1s, enter bottom">
+                            <div class="col-md-4 col-sm-4 col-xs-12 P0" style="margin-top: 25px">
+                                <a class="divImg" href="{{:url('index/article/articleDetail',['id'=>$vo->id])}}">
+                                    <p>{{:mb_substr($vo->content,0,300)}}..</p>
+                                </a>
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <div class="divCon">
+                                    <a href="{{:url('index/article/articleDetail',['id'=>$vo->id])}}" class="title font16" ><h4>{{$vo->title}}</h4></a>
+                                    <a href="{{:url('index/article/articleDetail',['id'=>$vo->id])}}" class="title font16" ><h5>{{$vo->author}}</h5></a>
+                                    <div class="desc font14 PT15 PB15">
+                                        {{$vo->describe}}..
+                                    </div>
+                                    <div class="time">
+                                            <span class="font14 color999">
+                                                发布时间：{{$vo->created_at}}
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {{/volist}}
+                    </ul>
+                </div>
+                <div class="pager" data-sr="move 100px, over .8s,wait .1s, enter bottom">
+                    <div class="pagin-list col-md-12 col-sm-12 col-xs-12">
+                        <!--***************************以下是分页展示****************************--->
+                        {{$articleSort->render()}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/block}}

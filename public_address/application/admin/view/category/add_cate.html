@@ -1,0 +1,55 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+
+<form action="{{:url('admin/category/doAddCate')}}" method="post" class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-2">
+            <label class="control-label">所属模块</label>
+        </div>
+        <div class="col-md-5">
+            <select name="parent_id" class="form-control">
+                <option value="1">顶级模块</option>
+             {{volist name="list" id="vo"}}
+                <option value="{{$vo['id']}}" disabled>{{:str_repeat('--',$vo['level'])}}{{$vo['category_name']}}</option>
+              {{/volist}}
+            </select>
+        </div>
+        <div class="col-md-5">
+            <span class="help-block">请选择顶级模块</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2">
+            <label class="control-label">模块名称</label>
+        </div>
+        <div class="col-md-5">
+            <input type="text"   autocomplete="off" name="category_name" value="" class="form-control" required >
+        </div>
+        <div class="col-md-5">
+            <span class="help-block">模块名称必须填写</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2">
+            <label class="control-label">是否上线?</label>
+        </div>
+        <div class="col-md-5">
+            <input type="radio" name="is_line" value="0" > 不上线<br>
+            <input type="radio" name="is_line" value="1" checked> 上线
+        </div>
+        <div class="col-md-5">
+            <input type="radio" name="recommend" value="1" > 显示列表<br>
+            <input type="radio" name="recommend" value="0" checked> 不显示列表
+        </div>
+        <div class="col-md-5">
+            <span class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10 col-md-offset-2">
+            <input type="submit" value="添加" class="btn btn-primary" style="color: black">
+            <input type="reset" value="取消" class="btn btn-default">
+        </div>
+    </div>
+</form>
+{{/block}}

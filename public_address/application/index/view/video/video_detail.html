@@ -1,0 +1,43 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+
+<!--/banner-->
+
+<div class="heng_box heng_box_4" style="background-color: #FEFEDA">
+    <div class="plan_com">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="c1_detail P15">
+                    <div class="div_middle noborder PT30">
+                        <h4 class="h4">
+                            {{$result->title}}
+                        </h4>
+                        <p class="time"></p>
+                        <div class="detailsCont">
+                            <p style="text-align:center; padding-bottom:20px;">
+                                <video src="__STATIC__/upload/video/{{$result->filename}}" style="width: 600px;height:222px; " controls></video>
+                            </p>
+
+                        </div>
+                        <div>
+                            <div style="margin-left: 200px">
+                                <h4>描述:</h4>
+                                <p>
+                                    {{$result->content}}
+                                </p>
+                            </div>
+                            <div style="margin-left: 200px">
+                                <h4>创建时间:</h4>
+                                <p>
+                                    {{$result->created_at}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/block}}

@@ -1,0 +1,84 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+<form id="newsAddForm"  action="{{:url('index/recruit/addRecruit')}}" method="post" enctype="multipart/form-data">
+
+    <div class="formzone">
+        <div class="tablezone">
+            <table width="100%" cellspacing="0" cellpadding="2" border="0" align="center" style="margin-left: 500px">
+                <tbody>
+                <tr>
+                    <td height="30" align="center">职位类型</td>
+                    <td height="30">
+                        <input name="type" value="0" type="radio"  required/>
+                        全职          <input name="type" value="1" type="radio" />
+                        兼职          <input name="type" value="2" type="radio" />
+                        全/兼职
+                    </td>
+                </tr>
+                <tr>
+                    <td height="30" align="center">性别</td>
+                    <td height="30"><input name="sex" value="1" type="radio" required />
+                        男          <input name="sex" value="2" type="radio" />
+                        女
+                    </td>
+                </tr>
+                <tr>
+                    <td height="30" align="center">年龄</td>
+                    <td height="30">
+                        <input name="age" checked="checked" type="number" required maxlength="3"/>
+                        <input type="hidden" name="recruit_id" value="{{$recruit_id}}">
+                    </td>
+                </tr>
+                <tr>
+                    <td height="30" align="center">工作经验</td>
+                    <td height="30">
+                        <select name="current" id="experience">
+                            <option value="001">应届毕业生</option>
+                            <option value="1">1年以上</option>
+                            <option value="2">2年以上</option>
+                            <option value="3">3年以上</option>
+                            <option value="4">4年以上</option>
+                            <option value="5">5年以上</option>
+                            <option value="6">6年以上</option>
+                            <option value="7">7年以上</option>
+                            <option value="8">8年以上</option>
+                            <option value="9">9年以上</option>
+                            <option value="10">10年以上</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="30" align="center">学历</td>
+                    <td height="30">
+                        <select name="education" id="education">
+                            <option value="1">初中</option>
+                            <option value="2">高中</option>
+                            <option value="3">中专</option>
+                            <option value="4" selected>大专</option>
+                            <option value="5">本科</option>
+                            <option value="6" >硕士</option>
+                            <option value="7">博士</option>
+                            <option value="8">博士后</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="30" align="center">姓名:</td>
+                    <td height="30"><input name="applicationname" class="input" id="contact" value="" size="30" maxlength="200" type="text" required/>              </td>
+                </tr>
+                <tr>
+                    <td height="30" align="center">联系电话</td>
+                    <td height="30"><input name="phone" class="input" id="tel" value="" size="50" maxlength="11"  minlength="11" type="text" required/>              </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="adminsubmit" style="margin-left: 800px">
+            <input  onclick="KindSubmit();" value="提 交" class="btn btn-success" type="submit" />
+        </div>
+
+    </div>
+</form>
+
+{{/block}}

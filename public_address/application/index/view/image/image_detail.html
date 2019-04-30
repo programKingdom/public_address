@@ -1,0 +1,40 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+<!--banner-->
+
+<div class="heng_box heng_box_4">
+    <div class="plan_com">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="title_ty" id="title_ty">
+                    <a href="#" class="cur" data="1">精美图片</a>
+                </div>
+                <div class="c1_list">
+                    <div class="listitem" id="listitem_1" style="display:block;">
+                        {{volist name="filelist" id="file"}}
+                        <div class="col-md-3 col-sm-4 col-xs-12 heng_con">
+                            <div class="item">
+                                <a class="c1_img" href="#"><img src="__STATIC__/upload/image/{{$file->filename}}" class="img-responsive"></a>
+                                <p class="cl_time">
+                                    <strong class="font14 color333">
+                                        {{$result->author}}
+                                    </strong>
+
+                                </p>
+                                <a href="#" class="c1_titleText">{{$result->sdescribe}}</a>
+                            </div>
+                        </div>
+                        {{/volist}}
+                    </div>
+                </div>
+                <div class="pager">
+                    <div class="pagin-list col-md-12 col-sm-12 col-xs-12">
+                       <!--********************* 分页的显示 ***********************-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/block}}

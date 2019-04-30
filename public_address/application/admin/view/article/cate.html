@@ -1,0 +1,51 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+
+<form action="{{:url('admin/article/doAddCate')}}" method="post" class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-2">
+            <label class="control-label">所属分类</label>
+        </div>
+        <div class="col-md-5">
+            <select name="parent_id" class="form-control">
+                <option value="0">顶级分类</option>
+                {{volist name="list" id="vo"}}
+                <option value="{{$vo['id']}}">{{:str_repeat('--',$vo['level'])}}{{$vo['articlecategoryname']}}</option>
+                {{/volist}}
+            </select>
+        </div>
+        <div class="col-md-5">
+            <span class="help-block">请选择分类</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2">
+            <label class="control-label">分类名称</label>
+        </div>
+        <div class="col-md-5">
+            <input type="text" name="articlecategoryname" value="" class="form-control" required>
+        </div>
+        <div class="col-md-5">
+            <span class="help-block">分类名称必须填写</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2">
+            <label class="control-label">是否推荐</label>
+        </div>
+        <div class="col-md-5">
+            <input type="radio" name="is_line" value="0" > 不上线<br>
+            <input type="radio" name="is_line" value="1" checked> 上线
+        </div>
+        <div class="col-md-5">
+            <span class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10 col-md-offset-2">
+            <input type="submit" value="添加" class="btn btn-primary" style="color: black">
+            <input type="reset" value="取消" class="btn btn-default">
+        </div>
+    </div>
+</form>
+{{/block}}

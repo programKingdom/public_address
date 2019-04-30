@@ -1,0 +1,31 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+<div class="w100 banner">
+    <img src="__STATIC__/wap/img/banner_02.png" />
+</div>
+<!--banner end-->
+<div class="nav-zong">
+    <div id="wrapper">
+        <ul class="category_nav">
+            <li><a href="{{:url('wap/index/index')}}"><img src="__STATIC__/wap/img/icon_12.png" /></a></li>
+            <li class="one">
+                <a href="{{:url('wap/synopsis/index')}}">公司简介</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--nav end-->
+<div class="cp-ser clearfix">
+    <!--------------**************以下是公司信息的显示操作******************------------->
+    {{volist name="result" id="vo"}}
+    <dl>
+        <dt><a href="{{:url('wap/synopsis/detail',['id'=>$vo['id']])}}"><img src="__STATIC__/upload/synopsis/{{$vo['filename']}}" /></a></dt>
+        <dd>{{$vo['stitle']}}</dd>
+    </dl>
+    {{/volist}}
+</div>
+<div class="w100 page clearfix">
+        <!-----************以下是分页的展示************------>
+    {{$result->render()}}
+</div>
+{{/block}}

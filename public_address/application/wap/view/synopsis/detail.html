@@ -1,0 +1,27 @@
+{{extend name="public/base"}}
+
+{{block  name="content"}}
+<!--banner end-->
+<div class="nav-zong">
+    <div id="wrapper">
+        <ul class="category_nav">
+            <li><a href="{{:url('wap/index/index')}}"><img src="__STATIC__/wap/img/icon_12.png" /></a></li>
+            <li class="one">
+                <a href="{{:url('wap/synopsis/index')}}">公司简介</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--nav end-->
+<div class="cp-xq clearfix">
+<h3>{{$result['stitle']}}</h3>
+<div class="cp_img"><img src="__STATIC__/upload/synopsis/{{$result['filename']}}" /></div>
+<div class="cp_m" style="background-color: #FFF;">
+    <p style="color: black">{{$result['sdescribe']}}</p>
+    <p style="color: black">时间:{{:date('Y-m-d H:i:s',$result['created_at'])}}</p>
+</div>
+<div class="cp_main">
+    <p>{{$result['scontent']}}</p>
+</div>
+</div>
+{{/block}}

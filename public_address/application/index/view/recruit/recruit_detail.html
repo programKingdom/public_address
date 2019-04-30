@@ -1,0 +1,89 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-condensed table-hover" style="width:1200px;margin-left: 380px">
+        <tr>
+            <td>职位名称:</td>
+            <td>职业类型:</td>
+            <td>性别:</td>
+            <td>工作经验:</td>
+        </tr>
+        <tr>
+            <td>{{$result->recruitname}}</td>
+            {{if condition="$result->type==1"}}
+            <td>全职</td>
+            {{else}}
+            <td>兼职</td>
+            {{/if}}
+            <td>
+                <select  disabled>
+                    <option {{if condition="$result->sex == 0"}} selected="selected" {{/if}} value="0" >不限</option>
+                    <option  {{if condition="$result->sex == 1"}} selected="selected" {{/if}} value="001">男</option>
+                    <option  {{if condition="$result->sex == 2"}} selected="selected" {{/if}} value="1">女</option>
+                </select>
+            </td>
+            <td> <select name="current" id="experience" disabled>
+                <option {{if condition="$result->current == 0"}} selected="selected" {{/if}} value="0" >不要求</option>
+                <option  {{if condition="$result->current == 001"}} selected="selected" {{/if}} value="001">应届毕业生</option>
+                <option  {{if condition="$result->current == 1"}} selected="selected" {{/if}} value="1">1年以上</option>
+                <option  {{if condition="$result->current == 2"}} selected="selected" {{/if}} value="2">2年以上</option>
+                <option  {{if condition="$result->current == 3"}} selected="selected" {{/if}} value="3">3年以上</option>
+                <option  {{if condition="$result->current == 4"}} selected="selected" {{/if}} value="4">4年以上</option>
+                <option  {{if condition="$result->current == 5"}} selected="selected" {{/if}} value="5">5年以上</option>
+                <option  {{if condition="$result->current == 6"}} selected="selected" {{/if}} value="6">6年以上</option>
+                <option  {{if condition="$result->current == 7"}} selected="selected" {{/if}} value="7">7年以上</option>
+                <option  {{if condition="$result->current == 8"}} selected="selected" {{/if}} value="8">8年以上</option>
+                <option  {{if condition="$result->current == 9"}} selected="selected" {{/if}} value="9">9年以上</option>
+                <option  {{if condition="$result->current == 10"}} selected="selected" {{/if}} value="10">10年以上</option>
+            </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td>学历要求:</td>
+            <td>招聘人数:</td>
+            <td>工作地点:</td>
+            <td>专业:</td>
+        </tr>
+        <tr>
+            <td> <select name="education" id="education" disabled>
+                <option value="0"  {{if condition="$result->education == 0"}} selected="selected" {{/if}} >不要求</option>
+                <option value="1" {{if condition="$result->education == 1"}} selected="selected" {{/if}} >初中</option>
+                <option value="2" {{if condition="$result->education == 2"}} selected="selected" {{/if}} >高中</option>
+                <option value="3" {{if condition="$result->education == 3"}} selected="selected" {{/if}} >中专</option>
+                <option value="4" {{if condition="$result->education == 4"}} selected="selected" {{/if}} >大专</option>
+                <option value="5" {{if condition="$result->education == 5"}} selected="selected" {{/if}} >本科</option>
+                <option value="6" {{if condition="$result->education == 6"}} selected="selected" {{/if}} >硕士</option>
+                <option value="7" {{if condition="$result->education == 7"}} selected="selected" {{/if}} >博士</option>
+                <option value="8" {{if condition="$result->education == 8"}} selected="selected" {{/if}} >博士后</option>
+            </select></td>
+            <td>{{$result->popnumber}}</td>
+            <td>{{$result->workingplace}}</td>
+            <td>{{$result->major}}</td>
+        </tr>.
+        <tr>
+            <td>职位描述:</td>
+            <td>招聘要求:</td>
+            <td>联系人:</td>
+            <td>联系电话:</td>
+        </tr>
+        <tr>
+            <td>{{$result->duty}}</td>
+            <td>{{$result->requirement}}</td>
+            <td>{{$result->contactscall}}</td>
+            <td>{{$result->phone}}</td>
+        </tr>
+        <tr>
+            <td colspan="4">电子邮箱:</td>
+
+        </tr>
+        <tr>
+            <td colspan="4">{{$result->contactsemail}}</td>
+        </tr>
+        <tr>
+            <td colspan="4" ><a href="{{:url('index/recruit/index',['category_id'=>$result->id])}}" class="btn-block btn-success"
+                                style="border-radius: 8px;width: 600px;height: 40px;margin-left: 300px ;display: block;padding-top: 1px"> <h4 style="margin-left: 270px;";>前去应聘</h4></a></td>
+        </tr>
+    </table>
+</div>
+{{/block}}

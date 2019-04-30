@@ -1,0 +1,45 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" >
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Title here -->
+    <title></title>
+    <!-- Description, Keywords and Author -->
+    <meta name="description"/>
+    <meta name="keywords" content="hanzhuo" />
+    <meta name="author" content="hanzhuo" />
+    <!--     引入js css 等文件        -->
+    {{include file="public/link"}}
+    <!--      引入结束                -->
+</head>
+<body style="background-color: #EEEEEE">
+    <!--      引入导航条              -->
+    {{include file="public/top"}}
+    <!--        引入导航条结束        -->
+
+    <!--       引入左边栏             -->
+    {{include file="public/left"}}
+    <!--       引入左边栏结束         -->
+    <div id="content" class="no-sidebar">
+        <div class="inner_content">
+            <div class="user_iframe">
+                <div class="user_iframe-content">
+
+
+                    <!--内容页开始-->
+                    <div id="iframeDiv">
+                       {{block name="content"}}
+                        {{/block}}
+                    </div>
+                    <!--/内容页结束-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+</body>
+</html>

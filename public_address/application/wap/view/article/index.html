@@ -1,0 +1,41 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+
+
+<div class="w100 banner">
+    <img src="__STATIC__/wap/img/banner_0500.png" />
+</div>
+
+<div class="nav-zong">
+    <div id="wrapper">
+        <ul class="category_nav">
+            <li id="one"><a href="{{:url('wap/index/index')}}"><img src="__STATIC__/wap/img/icon_12.png" /></a></li>
+            <li class="one">
+                <a>新闻中心</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--nav end-->
+
+<div class="clearfix w96 js-zs">
+
+    {{volist name="result" id="vo"}}
+    <dl class="clearfix">
+        <dt class="new-date">
+            <strong>{{:date('d',$vo['created_at'])}}</strong><span>{{:date('Y/m',$vo['created_at'])}}</span>
+        </dt>
+        <dd class="fr new-con">
+            <h3><a href="{{:url('wap/article/detail',['id'=>$vo['id']])}}">{{$vo['title']}}</a></h3>
+            <p><a href="{{:url('wap/article/detail',['id'=>$vo['id']])}}">{{$vo['describe']}}</a></p>
+        </dd>
+    </dl>
+    {{/volist}}
+</div>
+
+<div class="w100 page clearfix">
+        <!--- ***************** 以下是分页的展示 ***************** --->
+        {{$result->render()}}
+</div>
+
+{{/block}}

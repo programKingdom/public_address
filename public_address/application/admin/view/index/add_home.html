@@ -1,0 +1,121 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+<div class="menu-tab">
+    <ul>
+        <li class="tab-item-1" style="margin-left: 40px">
+            <a href="{{:url('admin/article/addArticle')}}">
+                <img src="__STATIC__/images/index_kj_01.png">
+                发布文章
+            </a>
+        </li>
+        <li class="tab-item-2" style="margin-left: 40px">
+            <a href="{{:url('admin/video/addVideo')}}">
+                <img src="__STATIC__/images/index_kj_02.png">
+                发布视频
+            </a>
+        </li>
+        <li class="tab-item-3" style="margin-left: 40px">
+            <a href="{{:url('admin/image/addImage')}}">
+                <img src="__STATIC__/images/index_kj_03.png">
+                发布图片
+            </a>
+        </li>
+        <li class="tab-item-4" style="margin-left: 40px">
+            <a href="{{:url('admin/recruit/position')}}">
+                <img src="__STATIC__/images/index_kj_04.png">
+                人才招聘
+            </a>
+        </li>
+        <li class="tab-item-5" style="margin-left: 40px">
+            <a href="{{:url('admin/admin/index')}}">
+                <img src="__STATIC__/images/index_kj_05.png">
+                管理员设置
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="inner_content-box" style="border: 3px solid #FFF;background-color: #EEE;width: 1100px;margin-top: 20px;margin-left: 60px">
+<div class="content">
+    <div class="cont w1000">
+
+        <div class="list-item">
+            <div class="item" style="border: 1px solid #FFF;padding: 10px;border-radius: 5px">
+                <div class="layui-fluid">
+                    <div class="layui-row">
+                        {{if condition="isset($video)"}}
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
+
+                                <video src="__STATIC__/upload/video/{{$video->filename}}" style="width: 419px;height:222px; " controls></video>
+                        </div>
+                        <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                            <div class="item-cont">
+                                <h3>最新视频<button class="layui-btn layui-btn-danger new-icon">new</button></h3>
+                                <h5><a href="{{:url('admin/video/addVideo')}}" style="color: #8A1F11">添加视频</a></h5>
+                                <p>{{$video->sdescribe}}</p>
+
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="border: 1px solid #FFF;padding: 10px;border-radius: 5px">
+                <div class="layui-fluid">
+                    <div class="layui-row">
+                        {{if condition="isset($image)&&isset($imagefile)"}}
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
+                         <img src="__STATIC__/upload/image/{{$imagefile->filename}}" alt="" style="width: 419px;height:222px; margin-left: 10px">
+                        </div>
+                        <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                            <div class="item-cont">
+                                <h3>最新图片<button class="layui-btn layui-btn-danger new-icon">new</button></h3>
+                                <h5><a href="{{:url('admin/image/addImage')}}" style="color: #8A1F11">添加图片</a></h5>
+                                <p>{{$image->sdescribe}}</p>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="border: 1px solid #FFF;padding: 10px;border-radius: 5px">
+                <div class="layui-fluid">
+                    <div class="layui-row">
+                        {{if condition="isset($article)"}}
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
+                            <p>{{$article->content}}</p>
+                        </div>
+                        <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                            <div class="item-cont">
+                                <h3>最新文章<button class="layui-btn layui-btn-danger new-icon">new</button></h3>
+                                <h5><a href="{{:url('admin/article/addArticle')}}" style="color: #8A1F11">添加文章</a></h5>
+                                <h5>{{$article->title}}</h5>
+                                <h5>{{$article->author}}</h5>
+
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+
+
+        <div id="demo" style="text-align: center;"></div>
+    </div>
+</div>
+<script type="text/javascript" src="__STATIC__/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '../res/js/util/'
+    }).use(['element','laypage','jquery','menu'],function(){
+        element = layui.element,laypage = layui.laypage,$ = layui.$,menu = layui.menu;
+        laypage.render({
+            elem: 'demo'
+            ,count: 70 //数据总数，从服务端得到
+        });
+        menu.init();
+    })
+</script>
+{{/block}}
+</div>
+
+</div>

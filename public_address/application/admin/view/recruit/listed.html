@@ -1,0 +1,121 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+<div class="formzone">
+
+    <div class="searchzone">
+        <table width="100%" height="30" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+            <tr>
+                <td height="30">
+                        <select name="recruit_id" id="seldd">
+                            <option value="0" selected>请选择工作岗位</option>
+                            {{volist name="list" id="vo"}}
+                            <option value="{{$vo->id}}" >{{$vo->recruitname}}</option>
+                            {{/volist}}
+                        </select>
+                    <h5 style="display: inline">岗位列表</h5>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        $('#seldd').change(function(){
+           var ve =  $(this).val();
+            if(ve != 0){
+                $('.list').remove();
+                $.ajax({
+                    type: 'get',
+                    url:"http://127.0.0.1/public_address/public/admin/recruit/listeds",
+                    data:{'recruit_id':ve},
+                    success: function(res){
+                        var list =  JSON.parse(res);
+                        var str = '';
+                        $.each(list, function(key,value){
+                          str =  str + '<tr class="list"><td width="30" align="center">' + value.id +' </td><td width="50">' + value.education + '<td width="90">' + value.name + '</td><td width="90">'
+                            + value.applicationname +'</td>'+'{{if condition="'+value.sex+'"}} <td width="90">男</td>{{else}} <td width="90">女</td>{{/if}}<td width="90">'+ value.created_at + '</td> <td><a href="#" class="btn btn-info">查看</a></td> <td><a href="{{:url('admin/recruit/delApplication')}}" class="btn btn-danger">删除</a></td> </tr>';
+                        });
+                        var str1 = '<tr class="list"> <td class="biaoti" width="40">ID</td> <td class="biaoti" width="50" height="26">学历</td> <td class="biaoti" width="90">应聘职位</td> <td class="biaoti" width="50">姓名</td> <td class="biaoti" width="50">性别</td> <td class="biaoti" width="90">提交时间</td> <td class="biaoti" width="25" height="26">查看</td> <td class="biaoti" width="25" height="26">删除</td> </tr>';
+                        var str3 = str1+str;
+                        $('#tbody1').html(str3);
+                    }
+                });
+            }
+        });
+    </script>
+    <br>
+    <h5>应聘列表</h5>
+    <form name="delfm" action="feedback.php" method="post">
+        <div class="listzone">
+            <table width="100%" cellspacing="0" cellpadding="3" border="0" align="center">
+                <tbody id="tbody1">
+                <tr class="list">
+                    <td class="biaoti" width="40">ID</td>
+                    <td class="biaoti" width="50" height="26">学历</td>
+                    <td class="biaoti" width="90">应聘职位</td>
+                    <td class="biaoti" width="50">姓名</td>
+                    <td class="biaoti" width="50">性别</td>
+                    <td class="biaoti" width="90">提交时间</td>
+                    <td class="biaoti" width="25" height="26">查看</td>
+                    <td class="biaoti" width="25" height="26">删除</td>
+                </tr>
+            {{volist  name="result" id="vo"}}
+                <tr class="list">
+                    <td width="30" align="center">
+                      {{$vo['id']}}
+                    </td>
+                    <td width="50">{{$vo['education']}}</td>
+                    <td width="90">{{$vo['name']}}</td>
+                    <td width="90">{{$vo['applicationname']}}</td>
+                    {{if condition="$vo['sex'] == 0"}}
+                    <td width="90">男</td>
+                    {{else}}
+                    <td width="90">女</td>
+                    {{/if}}
+                    <td width="90">{{$vo['created_at']}}</td>
+                    <td><a href="#" class="btn btn-info">查看</a></td>
+                    <td><a href="{{:url('admin/recruit/delApplication')}}" class="btn btn-danger">删除</a></td>
+
+                </tr>
+                {{/volist}}
+                </tbody>
+            </table>
+        </div>
+    </form>
+    <div id="showpages">
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    function Dpop(url, w, h) {
+        res = showModalDialog(url, null, 'dialogWidth: ' + w + 'px; dialogHeight: ' + h + 'px; center: yes; resizable: no; scroll: no; status: no;');
+        if (res == "ok") { window.location.reload(); }
+
+    }
+    function ordsc(nn, sc) {
+        if (nn != '') {
+            window.location = 'news_con.php?page=&sc=&pid=all&showtj=&showfb=&shownum=10&ord=' + nn;
+        } else {
+            if (sc == 'asc' || sc == '') {
+                window.location = 'news_con.php?page=&sc=desc&pid=all&showtj=&showfb=&shownum=10&ord=' + nn;
+            } else {
+                window.location = 'news_con.php?page=&sc=asc&pid=all&showtj=&showfb=&shownum=10&ord=' + nn;
+            }
+
+        }
+
+
+    }
+
+    function SelAll(theForm) {
+        for (i = 0 ; i < theForm.elements.length ; i++) {
+            if (theForm.elements[i].type == "checkbox" && theForm.elements[i].name != "SELALL") {
+                theForm.elements[i].checked = !theForm.elements[i].checked;
+            }
+        }
+    }
+
+</script>
+
+{{/block}}

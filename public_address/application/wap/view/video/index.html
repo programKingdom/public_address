@@ -1,0 +1,41 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+
+<div class="w100 banner">
+    <img src="__STATIC__/wap/img/banner_05.png" />
+</div>
+<!--banner end-->
+
+<div class="nav-zong">
+    <div id="wrapper">
+        <ul class="category_nav">
+            <li id="one"><a href="{{:url('wap/index/index')}}"><img src="__STATIC__/wap/img/icon_12.png" /></a></li>
+            <li class="one">
+                <a href="{{:url('wap/video/index')}}">视频中心</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--nav end-->
+
+<div class="clearfix w96 js-zs">
+    <!---------以下是视频的循环输出--------->
+    {{volist name="result" id="vo"}}
+    <dl class="clearfix">
+        <dt class="new-date">
+            <video src="__STATIC__/upload/video/{{$vo['filename']}}" style="width: 86px;height: 86px;"></video>
+        </dt>
+        <dd class="fr new-con">
+            <h3><a href="{{:url('wap/video/detail',['id'=>$vo['id']])}}">{{$vo['title']}}</a></h3>
+            <p><a href="{{:url('wap/video/detail',['id'=>$vo['id']])}}">{{$vo['sdescribe']}}</a></p>
+        </dd>
+    </dl>
+    {{/volist}}
+</div>
+
+<div class="w100 page clearfix">
+    <!-----***************分页的显示****************----->
+    {{$result->render()}}
+</div>
+
+{{/block}}

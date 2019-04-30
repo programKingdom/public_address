@@ -1,0 +1,59 @@
+{{extend name="public/base"}}
+
+{{block name="content"}}
+	
+	<form action="{{:url('admin/admin/doAddAdmin')}}" method="post" class="form-horizontal">
+        <div class="form-group">
+          <div class="col-md-2">
+            <label class="control-label">昵称</label>
+          </div>
+          <div class="col-md-5">
+            <input type="text" name="nick_name" value="" class="form-control"  style="background-color: rgba(255,255,200,0.8);">
+          </div>
+          <div class="col-md-5">
+
+          </div>
+        </div>
+         <div class="form-group">
+          <div class="col-md-2">
+            <label class="control-label">用户名</label>
+          </div>
+          <div class="col-md-5">
+            <input type="text" name="username" value="" class="form-control"  style="background-color: rgba(255,255,200,0.8);">
+          </div>
+          <div class="col-md-5">
+            <span class="help-block">用户名必须填写</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-2">
+            <label class="control-label">密码</label>
+          </div>
+          <div class="col-md-5">
+            <input type="password" name="password" value="" class="form-control"  style="background-color: rgba(255,255,200,0.8);">
+          </div>
+          <div class="col-md-5">
+            <span class="help-block">密码必须填写</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-2">
+            <label class="control-label">确认密码</label>
+          </div>
+          <div class="col-md-5">
+            <input type="password" name="repassword" value="" class="form-control"  style="background-color: rgba(255,255,200,0.8);">
+          </div>
+          <div class="col-md-5">
+            <span class="help-block">确认密码必须填写</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-10 col-md-offset-2">
+            <input type="submit" value="添加" class="btn btn-primary">
+            <input type="reset" value="取消" class="btn btn-default">
+          </div> 
+        </div>
+    </form>
+
+{{/block}}

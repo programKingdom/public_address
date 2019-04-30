@@ -1,0 +1,76 @@
+<div class="footer">
+    <p>版权所有新网网络科技有限公司</p>
+    <p>鲁ICP备888888888号-8</p>
+    <p>技术支持电话：100</p>
+</div>
+<footer class="ui-footer ui-footer-stable ui-border-t fd-b">
+    <ul class="ui-tiled fd-bottom">
+        <li>
+            <a href="{{:url('wap/index/index')}}"><div><img src="__STATIC__/wap/img/icon_23.png" /></div><i>首页</i></a>
+        </li>
+        <li>
+            <a href="tel:18764911010"><div><img src="__STATIC__/wap/img/icon_24.png" /></div><i>电话</i></a>
+        </li>
+        <li>
+            <a href="sms:18764911010"><div><img src="__STATIC__/wap/img/icon_25.png" /></div><i>短信</i></a>
+        </li>
+    </ul>
+</footer>
+
+<!--导航弹出层-->
+<script type="text/javascript">
+    $(function(){
+        $( '#dl-menu' ).dlmenu();
+    });
+</script>
+<!--导航弹出层-->
+<script type="text/javascript">
+    $(function(){
+        // 轮播
+        bannerRotate.bannerInit();
+    });
+
+    // banner rotating
+    var bannerRotate = {
+        _time: 5000,
+        _fade: 200,
+        _i: 0,
+        _interval: null,
+        _navId: "#mb-inav",
+        _navBox: "#mb-ibox",
+        _navTxt: "#mb-itxt",
+        bannerShow: function() {
+            $(this._navId).find("li a").removeClass("cur");
+            $(this._navId).find("li:eq("+this._i+")").find("a").addClass("cur");
+
+            $(this._navBox).find("a").fadeOut(this._fade);
+            $(this._navBox).find("a:eq("+this._i+")").fadeIn(this._fade);
+
+            $(this._navTxt).find("div").hide();
+            $(this._navTxt).find("div:eq("+this._i+")").fadeIn(this._fade);
+        },
+        bannerStart:function() {
+            var _this = this;
+            _this._interval = setInterval(function() {
+                if(_this._i >= 1) {
+                    _this._i = 0;
+                }
+                else {
+                    _this._i++;
+                }
+                _this.bannerShow();
+            }, _this._time);
+        },
+        bannerInit: function() {
+            var _this = this;
+            _this.bannerStart();
+
+            $(_this._navId).find("li a").bind("mouseover", function() {
+                clearInterval(_this._interval);
+                _this._i = $(this).parent().index();
+                _this.bannerShow();
+                _this.bannerStart();
+            });
+        }
+    };
+</script>

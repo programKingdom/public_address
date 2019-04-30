@@ -1,0 +1,49 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+
+<!--/banner-->
+<div class="heng_box heng_box_4">
+    <div class="plan_com">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="title_ty title_ty_3" id="title_ty">
+                    <a href="#" data="1">精美图片</a>
+                </div>
+                <div class="c1_list">
+                    <ul class="listnew P10 PT15">
+                        {{volist name="imageSort" id="vo"}}
+                        <li data-sr="move 100px, over .8s,wait .1s, enter bottom">
+                            <div class="col-md-4 col-sm-4 col-xs-12 P0">
+                                <a class="divImg" href="{{:url('index/image/imageDetail',['id'=>$vo->id])}}">
+                                    <img src="__STATIC__/upload/image/{{$vo->filename}}" style="width: 300px;height: 120px">
+                                </a>
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <div class="divCon">
+                                    <a href="{{:url('index/image/imageDetail',['id'=>$vo->id])}}" class="title font16"><h4>{{$vo->title}}</h4></a>
+                                    <div class="desc font14 PT15 PB15">
+                                        描述:{{$vo->sdescribe}}
+                                    </div>
+                                    <div class="time">
+                                            <span class="font14 color999">
+                                                时间：{{$vo->created_at}}
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {{/volist}}
+                    </ul>
+                </div>
+                <div class="pager" data-sr="move 100px, over .8s,wait .1s, enter bottom">
+                    <div class="pagin-list col-md-12 col-sm-12 col-xs-12">
+                        <!--***************************以下是分页展示****************************--->
+                        {{$imageSort->render()}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/block}}

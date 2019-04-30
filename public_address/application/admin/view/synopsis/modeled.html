@@ -1,0 +1,137 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+<form id="newsAddForm" action="{{:url('admin/synopsis/updatesynopsis')}}" method="post" enctype="multipart/form-data">
+    <div class="formzone">
+        <div class="font-weight">
+            公司信息发布
+        </div>
+        <div class="tablezone">
+            <div id="notice" class="noticediv"></div>
+
+            <table width="100%" cellspacing="0" cellpadding="2" border="0" align="center">
+                <tbody>
+                <tr>
+                    <td width="100" height="30" align="center">公司信息分类</td>
+                    <td height="30">
+                        <font color="#FF0000">*</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100" height="30" align="center">公司信息标题</td>
+                    <td height="30">
+                        <input name="stitle" style="WIDTH: 499px;font-size:14px;" maxlength="200" class="input" type="text" value="{{$result->stitle}}" required/>
+                        <font color="#FF0000">*</font>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div id="proplist">
+
+            </div>
+            <table width="100%" cellspacing="0" cellpadding="2" border="0" align="center">
+                <tbody>
+                <tr>
+                    <td width="100" height="30" align="center">主题图片</td>
+                    <td height="30">
+                        <input name="file_name[]" class="input" style="WIDTH: 499px;" type="file" multiple />
+                    </td>
+                </tr>
+                <tr id="trzz" >
+                    <td width="100" height="30" align="center"></td>
+                    <td  >
+                    {{volist name="file" id="vo"}}
+                        <div class="js_picRemove" data-id="{{$vo->id}}" style="display: inline">
+                            <img src="__STATIC__/upload/synopsis/{{$vo->filename}}" alt="" style="width: 50px;">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </div>
+                        {{/volist}}
+                    </td>
+
+
+                </tr>
+                <script type="text/javascript">
+                    $('.glyphicon').click(function() {
+                                var that  = $(this).parent()
+                                var value = $(this).parent().attr("data-id");
+                                $.ajax({
+                                    type:'post',
+                                    data:{'id':value},
+                                    url:'http://127.0.0.1/public_address/public/admin/synopsis/editsynopsisfile',
+                                    success:function(res){
+                                        that.remove();
+                                    }
+                                });
+                            }
+                    );
+                </script>
+                <tr>
+                    <td width="100" height="30" align="center">公司信息摘要</td>
+                    <td height="30">
+                        <textarea name="sdescribe" style="WIDTH: 499px;font-size:14px;" class="textarea" rows="3"  required>{{$result->sdescribe}}</textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width="100" height="30" align="center">公司信息作者</td>
+                    <td height="30">
+                        <input name="sauthor" style="WIDTH: 499px;font-size:14px;" maxlength="100" class="input" value="{{$result->sauthor}}" type="text" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100" height="30" align="center">关键字</td>
+                    <td height="30">
+                        <input name="skeyword" style="WIDTH: 499px;font-size:14px;" maxlength="100" class="input" value="{{$result->skeyword}}" type="text"  required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100" height="30" align="center">公司信息内容</td>
+                    <td height="30">
+                        <input type="hidden" name="admin_id" value="{{$Think.session.admin}}" />
+                        <textarea name="scontent" rows="10" id="ueditor" style="width: 500px;" required>
+                            {{$result->scontent}}
+                        </textarea>
+                        <script type="text/javascript">
+                            var editor = new KindEditor("editor");
+                            editor.hiddenName = "body";
+                            editor.editorWidth = "680px";
+                            editor.editorHeight = "300px";
+                            editor.skinPath = "lib/kedit/skins/default/";
+                            editor.uploadPath = "lib/kedit/upload_cgi/upload.php";
+                            editor.imageAttachPath = "news/pics/";
+                            editor.iconPath = "lib/kedit/icons/";
+                            editor.show();
+                            function KindSubmit() {
+                                editor.data();
+                            }
+                        </script>
+
+                        <input id="nowid" value="{{$result->category_id}}" type="hidden"  name="category_id"/>
+                        <input  value="{{$result->id}}" type="hidden"  name="id"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="30" align="center">公司信息状态</td>
+                    <td height="30">
+                        <input type="radio" name="is_line" value="1" {{if condition="$result->is_line == 1"}}checked="checked" {{/if}}/>上线&nbsp;&nbsp;
+                        <input type="radio" name="is_line" value="0" {{if condition="$result->is_line == 0"}}checked="checked" {{/if}} />不上线&nbsp;&nbsp;
+                        <input type="radio" name="recommend" value="1" {{if condition="$result->recommend == 1"}}checked="checked" {{/if}} />推荐&nbsp;&nbsp;
+                        <input type="radio" name="recommend" value="0"  {{if condition="$result->recommend == 0"}}checked="checked" {{/if}}/>不推荐&nbsp;&nbsp;
+
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="adminsubmit">
+            <input  onclick="KindSubmit();" value="更新" class="btn btn-default" type="submit" />
+        </div>
+
+    </div>
+</form>
+<script type="text/javascript">
+    // 实例化ueditor编辑器
+    var ue = UE.getEditor('ueditor');
+</script>
+{{/block}}

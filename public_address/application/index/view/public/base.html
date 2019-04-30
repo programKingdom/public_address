@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Title here -->
+    <title>起风了建站</title>
+    <!-- Styles -->
+    {{include file="public/link"}}
+</head>
+<body>
+<!--头部开始-->
+    {{include file="public/header"}}
+<!--/头部结束-->
+{{block name="tmp"}}
+<div class="MT65_mobile"></div>
+<div id="carousel-example-generic" class="carousel carousel-fade">
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="__STATIC__/index/images/xwz.PNG" class="img-responsive" alt="" style="width: 100%;">
+        </div>
+    </div>
+</div>
+
+{{/block}}
+{{block name="content"}}
+
+
+
+
+{{/block}}
+<!--底部导航开始-->
+{{include file="public/foot"}}
+<!--底部导航结束-->
+<!--右侧导航开始-->
+{{include file="public/right"}}
+<!--右侧导航结束-->
+</body>
+</html>

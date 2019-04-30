@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Copyright 2017-2019 南京华静科技有限公司 版权所有" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <!-- Styles -->
+    <link href="__STATIC__/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="__STATIC__/css/login.css" rel="stylesheet" type="text/css" />
+    <title>登录</title>
+</head>
+<body>
+<div align="center" class="login-center">
+    <!--SIGN UP-->
+    <div class="login-center-div">
+        <!--<h1>后台管理系统</h1>-->
+        <div class="login-form">
+            <div class="head-info">
+            </div>
+            <div class="clear"> </div>
+            <div class="avtar">
+            </div>
+            <form action="{{:url('admin/index/dologin')}}" method="post">
+                <input class="text" placeholder="账号" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = '账号'; }" type="text"  name="username" maxlength="20" autocomplete="off"/>
+                <div class="key">
+                    <input  placeholder="密码" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = '密码'; }" type="password" name="password" maxlength="20" autocomplete="off"/>
+                </div>
+                <div class="yz">
+                    <input placeholder="验证码" name="captcha" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = '验证码'; }" class="code" type="text" maxlength="5" autocomplete="off" />
+                    <!--   这里是验证码的相关路径，各位站长自行更换   -->
+                    <img class="codeimg" alt="看不清？点击更换" src="{{:captcha_src()}}" width="140px" height="40px" id="captcha" style="border-radius: 5px" />
+                </div>
+                <div class="signin">
+                    <input type="submit" value="登录" class="btnSubmit">
+                </div>
+            </form>
+
+        </div>
+        <div class="copy-rights">
+            <p></p>
+        </div>
+    </div>
+</div>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script type="text/javascript">
+    // 单击img标签
+    var c = document.getElementById('captcha');
+    // 执行单击事件
+    c.onclick = function(){
+        // 对象.属性名称 = 属性值;
+        this.src = "{{:captcha_src()}}?rand="+Math.random();
+    }
+</script>
+</body>
+</html>

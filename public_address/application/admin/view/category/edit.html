@@ -1,0 +1,65 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+
+<form action="{{:url('admin/category/doEdit')}}" method="post" class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-2">
+            <label class="control-label">所属模块</label>
+        </div>
+        <div class="col-md-5">
+            <select name="parent_id" class="form-control">
+                <option value="0">顶级模块</option>
+                {{volist name="list" id="vo"}}
+                <option value="{{$vo['id']}}" {{if condition="$vo['id']==$result->parent_id"}} selected {{/if}}>{{:str_repeat('--',$vo['level'])}}{{$vo['category_name']}}</option>
+                {{/volist}}
+            </select>
+        </div>
+        <div class="col-md-5">
+            <span class="help-block">请选择模块</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2">
+            <label class="control-label">模块名称</label>
+        </div>
+        <div class="col-md-5">
+            <input type="text" name="category_name" value="{{$result->category_name}}" class="form-control" required>
+        </div>
+        <div class="col-md-5">
+            <span class="help-block">模块名称必须填写</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2">
+            <label class="control-label">是否上线?</label>
+        </div>
+        <div class="col-md-5">
+            <input type="radio" name="is_line" value="0" {{if condition="$result->is_line==0"}} checked {{/if}} > 不上线<br>
+            <input type="radio" name="is_line" value="1" {{if condition="$result->is_line==1"}} checked {{/if}} > 上线
+            <input type="hidden" value="{{$result->id}}" name="id">
+        </div>
+        <div class="col-md-5">
+            <span class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2">
+            <label class="control-label">是否推荐?</label>
+        </div>
+        <div class="col-md-5">
+            <input type="radio" name="recommend" value="0" {{if condition="$result->recommend==0"}} checked {{/if}} > 不推荐<br>
+            <input type="radio" name="recommend" value="1" {{if condition="$result->recommend==1"}} checked {{/if}} > 推荐
+            <input type="hidden" value="{{$result->id}}" name="id">
+        </div>
+        <div class="col-md-5">
+            <span class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10 col-md-offset-2">
+            <input type="submit" value="确认修改" class="btn btn-primary" style="color: black">
+            <input type="reset" value="取消修改" class="btn btn-default">
+        </div>
+    </div>
+</form>
+{{/block}}

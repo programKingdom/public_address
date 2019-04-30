@@ -1,0 +1,144 @@
+{{extend name="public/base"}}
+{{block name="content"}}
+<form id="newsAddForm" action="{{:url('admin/article/doEditArticle')}}" method="post" enctype="multipart/form-data">
+    <div class="formzone">
+        <div class="font-weight">
+            文章编辑
+        </div>
+        <div class="tablezone">
+            <div id="notice" class="noticediv"></div>
+
+            <table width="100%" cellspacing="0" cellpadding="2" border="0" align="center">
+                <tbody>
+                <tr>
+                    <td width="100" height="30" align="center">文章分类</td>
+                    <td height="30">
+                        <select id="selcatid" name="category_id">
+                            {{volist name="list" id="vo"}}
+                            <option value="{{$vo['id']}}"{{if condition="$vo['id']==$res->category_id"}} selected {{/if}}>{{:str_repeat('--',$vo['level'])}}{{$vo['articlecategoryname']}}</option>
+                            {{/volist}}
+                        </select>
+                        <font color="#FF0000">*</font>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td width="100" height="30" align="center">文章标题</td>
+                    <td height="30">
+                        <input name="title" style="WIDTH: 499px;font-size:14px;" maxlength="200" class="input" type="text"  value="{{$res->title}}" required/>
+                        <font color="#FF0000">*</font>
+                    </td>
+
+                </tr>
+
+
+                </tbody>
+            </table>
+            <div id="proplist">
+
+            </div>
+            <table width="100%" cellspacing="0" cellpadding="2" border="0" align="center">
+                <tbody>
+                <tr>
+                    <td width="100" height="30" align="center">插入图片</td>
+                    <td height="30">
+                        <input name="article_file[]" class="input" style="WIDTH: 499px;" type="file" multiple />
+                        <input type="hidden" name="id" value="{{$res->id}}">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        {{if condition="isset($articlelist)"}}
+                        {{volist name="articlelist" id="article"}}
+                        <div style=" display:inline;" class="articleFileList" data-id="{{$article->id}}">
+                            <img src="__STATIC__/upload/article/{{$article->filename}}"  alt="" style="display: inline; width: 200px    ">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </div>
+                        {{/volist}}
+                        {{/if}}
+                    </td>
+                </tr>
+                <script type="text/javascript">
+                   $('.glyphicon').click(function(){
+                       var that   =  $(this).parent();
+                       var  fileId = that.attr('data-id');
+                       $.ajax({
+                          type:'post',
+                           data:{'id':fileId},
+                           url:'http://127.0.0.1/public_address/public/admin/article/deleteArticleFile',
+                           success:function(res)
+                           {
+                               that.remove()
+                           }
+                       });
+
+                   });
+
+
+                </script>
+                <tr>
+                    <td width="100" height="30" align="center">文章摘要</td>
+                    <td height="30">
+                        <textarea name="describe" style="WIDTH: 499px;font-size:14px;" class="textarea" rows="3" required>
+                            {{$res->describe}}
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100" height="30" align="center">作者</td>
+                    <td height="30">
+                        <input name="author" style="WIDTH: 499px;font-size:14px;" maxlength="100" class="input" value="{{$res->author}}" type="text" required />
+                        <input type="hidden" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100" height="30" align="center">内容</td>
+                    <td height="30">
+                        <textarea name="content" rows="10" id="ueditor" style="width: 500px;" required>
+                            {{$res->content}}
+                        </textarea>
+                        <script type="text/javascript">
+                            var editor = new KindEditor("editor");
+                            editor.hiddenName = "body";
+                            editor.editorWidth = "680px";
+                            editor.editorHeight = "300px";
+                            editor.skinPath = "lib/kedit/skins/default/";
+                            editor.uploadPath = "lib/kedit/upload_cgi/upload.php";
+                            editor.articleAttachPath = "news/pics/";
+                            editor.iconPath = "lib/kedit/icons/";
+                            editor.show();
+                            function KindSubmit() {
+                                editor.data();
+                            }
+                        </script>
+                        <input name="admin_id" value="{{$Think.session.admin}}" type="hidden" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="30" align="center">视频状态</td>
+                    <td height="30">
+                        <input type="radio" name="is_line" value="1" {{if condition="$res->is_line==1"}}checked="checked"{{/if}}/>上线&nbsp;&nbsp;
+                        <input type="radio" name="is_line" value="0"{{if condition="$res->is_line==0"}}checked="checked"{{/if}} />不上线&nbsp;&nbsp;
+                        <input type="radio" name="recommend" value="1" {{if condition="$res->recommend==1"}}checked="checked"{{/if}}/>推荐&nbsp;&nbsp;
+                        <input type="radio" name="recommend" value="0" {{if condition="$res->recommend==0"}}checked="checked"{{/if}}/>不推荐&nbsp;&nbsp;
+
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="adminsubmit">
+            <input  onclick="KindSubmit();" value="提 交" class="btn btn-default" type="submit" />
+        </div>
+
+    </div>
+</form>
+<script type="text/javascript">
+    // 实例化ueditor编辑器
+    var ue = UE.getEditor('ueditor');
+</script>
+{{/block}}

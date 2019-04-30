@@ -1,0 +1,93 @@
+{{extend name="public/base"}}
+
+{{block  name="content"}}
+
+<div class="w100 banner">
+    <a href="http://lyszgs.com/tour/"><img src="__STATIC__/wap/img/banner2.jpg" /></a>
+</div>
+<!--banner end-->
+
+<div class="in-zq w100">
+    <h3 class="h-title h-title1">项目工程<i></i>严格把关</h3>
+    <p class="h-title-p">Project engineering, strict control</p>
+    <div class="clearfix">
+        <dl>
+            <dt><a href="{{:url('wap/image/index')}}"><img src="__STATIC__/wap/img/icon_04.png" style="margin-top: 3.5px" /></a></dt>
+            <dd>
+                <h3>精品图片</h3>
+            </dd>
+        </dl>
+        <dl>
+            <dt><a href="{{:url('wap/article/index')}}"><img src="__STATIC__/wap/img/icon_05.png" style="margin-top: 8px" /></a></dt>
+            <dd>
+                <h3>最美文章</h3>
+            </dd>
+        </dl>
+        <dl>
+            <dt><a href="{{:url('wap/video/index')}}"><img src="__STATIC__/wap/img/icon_06.png" style="margin-top: 6px" /></a></dt>
+            <dd>
+                <h3>视频信息</h3>
+            </dd>
+        </dl>
+        <dl>
+            <dt style="padding-bottom: 6.5px"><a href="{{:url('wap/recruit/index')}}"><img src="__STATIC__/wap/img/icon_07.png" style="margin-top: 6.5px;" /></a></dt>
+            <dd>
+                <h3>人力资源</h3>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="in-cp w100">
+    <h3 class="h-title h-title1">可口视频<i></i>开心就好</h3>
+    <p class="h-title-p">Delicious video happy</p>
+    <div class="m-banner clearfix">
+        <div class="mb-img clearfix"  responsive>
+            <video src="__STATIC__/upload/video/{{$videoRes['filename']}}" style="width:100%;height: 346px;margin-left: 10px" controls></video>
+        </div>
+    </div>
+    <p class="add"><a href="{{:url('wap/video/index')}}">MORE+</a></p>
+</div>
+
+<div class="hezuo-center w100">
+    <h3 class="h-title h-title1">精美图片<i></i>赏心悦目</h3>
+    <p class="h-title-p">Beautiful pictures, pleasing to the eye</p>
+    <div class="hezuo-ms">
+        <p>卿  静静 欣赏
+    </div>
+    <div class="hezuo-con clearfix">
+        <!--******************** 以下视频是推荐视频仅限于三个推荐视频 ********************-->
+        {{volist name="imageRes" id="vc"}}
+        <dl class="fl">
+            <dt><a href="{{:url('wap/image/detail',['id'=>$vc['id']])}}"><img src="__STATIC__/upload/image/{{$vc['filename']}}"  /></a></dt>
+            <dd>
+                <h3><a href="{{:url('wap/image/detail',['id'=>$vc['id']])}}">{{$vc['title']}}</a></h3>
+                <i></i>
+            </dd>
+        </dl>
+        {{/volist}}
+
+    </div>
+    <div style="height:30px;"></div>
+    <p class="add"><a href="{{:url('wap/image/index')}}">MORE+</a></p>
+</div>
+
+<div class="clearfix w96 js-zs">
+    <h3 class="h-title h-title1">文章中心</h3>
+    <p class="h-title-p">news center</p>
+    <div style="height:20px;"></div>
+    <!------------以下是文章de循环输出-------------->
+    {{volist name="articleRes" id="ve"}}
+    <dl class="clearfix">
+        <dt class="new-date">
+            <strong>{{:date('d',$ve['created_at'])}}</strong><span>{{:date('Y/m',$ve['created_at'])}}</span>
+        </dt>
+        <dd class="fr new-con">
+            <h3><a href="{{:url('wap/article/detail',['id'=>$ve['id']])}}">{{$ve['title']}}</a></h3>
+            <p><a href="{{:url('wap/article/detail',['id'=>$ve['id']])}}">{{$ve['describe']}}</a></p>
+        </dd>
+    </dl>
+    {{/volist}}
+    <p class="add"><a href="{{:url('wap/article/index')}}">MORE+</a></p>
+</div>
+{{/block}}
